@@ -33,7 +33,6 @@ file(MAKE_DIRECTORY       ${Bam2Bax_BinDir})
 # shared & third-party paths
 
 if (NOT PBDATA_ROOT_DIR)
-    #set(PBDATA_ROOT_DIR ${Bam2Bax_RootDir}/../../../lib/cpp)
     set(PBDATA_ROOT_DIR ${Bam2Bax_RootDir}/../../../ext/pi/blasr_libcpp)
 endif()
 
@@ -105,7 +104,6 @@ check_cxx_compiler_flag("-Wunused-but-set-variable" HAS_NO_UNUSED_BUT_SET_VARIAB
 if(HAS_NO_UNUSED_BUT_SET_VARIABLE)
     set(Bam2Bax_CXX_FLAGS "${Bam2Bax_CXX_FLAGS} -Wunused-but-set-variable")
 endif()
-
 
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${Bam2Bax_LINKER_FLAGS}" )
 

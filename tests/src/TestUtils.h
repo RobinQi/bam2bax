@@ -33,26 +33,16 @@
 // OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 // SUCH DAMAGE.
 
-// Author: Yuan Li
+// Author: Derek Barnett 
 
-#include "TestData.h"
-#include "TestUtils.h"
-
-#include "DNASequence.hpp"
+#include "SMRTSequence.hpp"
+#include <pbbam/BamRecord.h>
 #include <string>
-#include <gtest/gtest.h>
+#include <vector>
 
-using namespace std;
-using namespace PacBio;
-using namespace PacBio::BAM;
+void RemoveFile(const std::string& filename);
+void RemoveFiles(const std::vector<std::string>& filenames);
 
-TEST(BAM2BAXTEST, EndToEnd)
-{
-    const std::string movieName = "m140905_042212_sidney_c100564852550000001823085912221377_s1_X0";
-    const std::string subreadsBamFilename = tests::Data_Dir + "/" + movieName + ".1.subreads.bam";
-    const std::string scrapsBamFilename = tests::Data_Dir + "/" + movieName + ".1.scraps.bam";
-
-    vector<string> bamFilenames = {subreadsBamFilename, scrapsBamFilename};
-    const int result = RunBam2Bax(bamFilenames, "-o " + tests::Out_Dir + "/" + movieName + ".1");
-    EXPECT_EQ(0, result);
-}
+int RunBam2Bax(const std::vector<std::string>& bamFilenames,
+               const std::string& outputType,
+               const std::string& additionalArgs = std::string());

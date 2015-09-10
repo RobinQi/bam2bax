@@ -2,10 +2,13 @@
 set(Bam2BaxTest_H
     ${Bam2Bax_TestsDir}/src/TestData.h
     ${Bam2Bax_TestsDir}/src/TestConstants.h
+    ${Bam2Bax_TestsDir}/src/TestUtils.h
 )
 
 set(Bam2BaxTest_CPP
     ${Bam2Bax_TestsDir}/src/test.cpp
+    ${Bam2Bax_TestsDir}/src/TestUtils.cpp
+    ${Bam2Bax_TestsDir}/src/test_HDFZMWWriter.cpp
     ${Bam2Bax_TestsDir}/src/test_HDFZMWWriter.cpp
     ${Bam2Bax_TestsDir}/src/test_HDFZMWMetricsWriter.cpp
     ${Bam2Bax_TestsDir}/src/test_HDFScanDataWriter.cpp

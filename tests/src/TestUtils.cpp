@@ -33,26 +33,45 @@
 // OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 // SUCH DAMAGE.
 
-// Author: Yuan Li
+// Author: Derek Barnett
 
 #include "TestData.h"
 #include "TestUtils.h"
 
-#include "DNASequence.hpp"
-#include <string>
 #include <gtest/gtest.h>
+#include <cstdio>
+#include <cstdlib>
 
 using namespace std;
-using namespace PacBio;
-using namespace PacBio::BAM;
 
-TEST(BAM2BAXTEST, EndToEnd)
+void RemoveFiles(const vector<string>& filenames)
 {
-    const std::string movieName = "m140905_042212_sidney_c100564852550000001823085912221377_s1_X0";
-    const std::string subreadsBamFilename = tests::Data_Dir + "/" + movieName + ".1.subreads.bam";
-    const std::string scrapsBamFilename = tests::Data_Dir + "/" + movieName + ".1.scraps.bam";
+    for (auto fn : filenames)
+        remove(fn.c_str());
+}
 
-    vector<string> bamFilenames = {subreadsBamFilename, scrapsBamFilename};
-    const int result = RunBam2Bax(bamFilenames, "-o " + tests::Out_Dir + "/" + movieName + ".1");
-    EXPECT_EQ(0, result);
+void RemoveFile(const string& filename)
+{
+    vector<string> filenames;
+    filenames.push_back(filename);
+    RemoveFiles(filenames);
+}
+
+int RunBam2Bax(const vector<string>& bamFilenames,
+               const string& outputType,
+               const string& additionalArgs)
+{
+    string convertArgs;
+    convertArgs += outputType;
+    if (!additionalArgs.empty()) {
+        convertArgs += string(" ");
+        convertArgs += additionalArgs;
+    }
+    for (auto fn : bamFilenames) {
+        convertArgs += string(" ");
+        convertArgs += fn;
+    }
+
+    const string& convertCommandLine = tests::Bam2Bax_Exe + string(" ") + convertArgs;
+    return system(convertCommandLine.c_str());
 }

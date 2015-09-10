@@ -1,8 +1,12 @@
 #How to Create Test Files And Run Tests#
-BAX2BAM=/home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/staging/PostPrimary/bax2bam/bin/bax2bam
-BAM2BAX=/home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/staging/PostPrimary/bam2bax/bin/bam2bax
-BLASR=/home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/ext/pi/blasr/blasr
 
+#BAX2BAM=/home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/staging/PostPrimary/bax2bam/bin/bax2bam
+#BAM2BAX=/home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/staging/PostPrimary/bam2bax/bin/bam2bax
+#BLASR=/home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/ext/pi/blasr/blasr
+
+BAX2BAM=bax2bam
+BAM2BAX=bam2bax
+BLASR=blasr
 
 I_PREFIX=m140905_042212_sidney_c100564852550000001823085912221377_s1_X0.1
 I_BAX_H5=$I_PREFIX.bax.h5
@@ -19,7 +23,6 @@ O_SR_SAM=$O_PREFIX.subreads.sam
 O_SC_SAM=$O_PREFIX.scraps.sam
 
 # Clean
-cd /home/UNIXHOME/yli/git/depot/software/smrtanalysis/bioinformatics/staging/PostPrimary/bam2bax/testdata
 rm -f *.bam *.sam *.tmp $O_PREFIX.* $I_PREFIX.*
 
 # Input bax.h5
